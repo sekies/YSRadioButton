@@ -14,15 +14,15 @@ public protocol YSRadioButtonViewControllerDelegate {
 
 
 public class YSRadioButtonViewController: UIViewController {
-    var delegate:YSRadioButtonViewControllerDelegate?
-    var labelColor:UIColor = .black
+    public var delegate:YSRadioButtonViewControllerDelegate?
+    public var labelColor:UIColor = .black
     var no:Int?
-    var radioHeadFill:UIColor = .red
-    var radioHeadStroke:UIColor = .red
-    var radioHeadFillSize:CGFloat = 0.6
-    var radioHeadMargin:CGFloat = 5
-    var labelMargin:CGFloat = 5
-    var lineWidth:CGFloat = 1
+    public var radioHeadFill:UIColor = .red
+    public var radioHeadStroke:UIColor = .red
+    public var radioHeadFillSize:CGFloat = 0.6
+    public var radioHeadMargin:CGFloat = 5
+    public var labelMargin:CGFloat = 5
+    public var lineWidth:CGFloat = 1
     private var btnLabels:[String]!
     private var btns:[YSRadioButton] = []
     private var selectedBtn:YSRadioButton?
