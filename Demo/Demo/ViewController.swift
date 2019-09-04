@@ -18,7 +18,7 @@ class ViewController: UIViewController,YSRadioButtonViewControllerDelegate {
         radio.labelColor = .darkGray
         radio.labelMargin = 0
         radio.lineWidth = 1
-        radio.radioHeadMargin = 0
+        radio.radioHeadMargin = 5
         radio.radioHeadStroke = .lightGray
         radio.radioHeadFill = .red
         addChild(radio)
