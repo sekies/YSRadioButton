@@ -15,6 +15,7 @@ class ViewController: UIViewController,YSRadioButtonViewControllerDelegate {
         
         let radio = YSRadioButtonViewController(labels: ["Orange","GrapeFruits","banana"])
         radio.delegate = self
+        radio.font = UIFont.systemFont(ofSize: 18)
         radio.labelColor = .darkGray
         radio.labelMargin = 0
         radio.lineWidth = 1

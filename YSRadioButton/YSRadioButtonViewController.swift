@@ -16,6 +16,7 @@ public protocol YSRadioButtonViewControllerDelegate {
 public class YSRadioButtonViewController: UIViewController {
     public var delegate:YSRadioButtonViewControllerDelegate?
     public var labelColor:UIColor = .black
+    public var font = UIFont.systemFont(ofSize: 18)
     var no:Int?
     public var radioHeadFill:UIColor = .red
     public var radioHeadStroke:UIColor = .red
@@ -61,12 +62,13 @@ public class YSRadioButtonViewController: UIViewController {
             btn.strokeColor = radioHeadStroke
             btn.fillSize = radioHeadFillSize
             btn.margin = radioHeadMargin
+            btn.titleLabel?.font = font
             btn.tag = index
             btn.setTitle(label, for: .normal)
             btn.setTitleColor(labelColor, for: .normal)
             btn.sizeToFit()
             btn.addTarget(self, action: #selector(btnTapped(_:)), for: .touchUpInside)
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+            btn.titleLabel?.font = font
             btn.titleEdgeInsets = UIEdgeInsets(
                 top: 0,
                 left: btn.frame.size.height+labelMargin,
