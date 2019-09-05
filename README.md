@@ -31,6 +31,7 @@ YSRadioButtonは簡単に使えるiOS用のswift製ラジオボタンライブ�
 4. delegateと各種デザインプロパティを設定します。必須となるのはdelegateのみです。
   ```Swift
   radio.delegate = self
+  radio.font = UIFont.systemFont(ofSize: 18)
   radio.labelColor = .black
   radio.labelMargin = 0
   radio.lineWidth = 1
