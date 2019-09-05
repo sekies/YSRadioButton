@@ -1,9 +1,7 @@
 # YSRadioButton
 YSRadioButtonは簡単に使えるiOS用のswift製ラジオボタンライブラリです。  
 
-![screenshot01.png](screenshot1.png)　
-![screenshot02.png](screenshot2.png)　
-![screenshot03.png](screenshot3.png)　
+![radioButton](radioButton.gif)　
 
 # Features
 ブラウザ標準のようなラジオボタンです。
