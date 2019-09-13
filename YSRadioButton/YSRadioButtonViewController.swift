@@ -14,103 +14,75 @@ public protocol YSRadioButtonViewControllerDelegate {
 
 
 public class YSRadioButtonViewController: UIViewController {
-    public var delegate:YSRadioButtonViewControllerDelegate?
-    public var labelColor:UIColor = .black
-    public var font = UIFont.systemFont(ofSize: 18)
-    var no:Int?
-    public var radioHeadFill:UIColor = .red
-    public var radioHeadStroke:UIColor = .red
-    public var radioHeadFillSize:CGFloat = 0.6
-    public var radioHeadMargin:CGFloat = 5
-    public var labelMargin:CGFloat = 5
-    public var lineWidth:CGFloat = 1
-    private var btnLabels:[String]!
-    private var btns:[YSRadioButton] = []
     private var selectedBtn:YSRadioButton?
+    private var radioGroupView:YSRadioButtonGroupView = YSRadioButtonGroupView()
+    
+    public var delegate:YSRadioButtonViewControllerDelegate?
+    var no:Int?
+    
+    public var labelColor: UIColor {
+        get { return radioGroupView.labelColor }
+        set { radioGroupView.labelColor = newValue }
+    }
+    
+    public var font: UIFont {
+        get { return radioGroupView.font }
+        set { radioGroupView.font = newValue }
+    }
+    
+    public var radioHeadFill: UIColor {
+        get { return radioGroupView.radioHeadFill }
+        set { radioGroupView.radioHeadFill = newValue }
+    }
+    
+    public var radioHeadStroke: UIColor {
+        get { return radioGroupView.radioHeadStroke }
+        set { radioGroupView.radioHeadStroke = newValue }
+    }
+    
+    public var radioHeadFillSize: CGFloat {
+        get { return radioGroupView.radioHeadFillSize }
+        set { radioGroupView.radioHeadFillSize = newValue }
+    }
+    
+    public var radioHeadMargin: CGFloat {
+        get { return radioGroupView.radioHeadMargin }
+        set { radioGroupView.radioHeadMargin = newValue }
+    }
+    
+    public var labelMargin: CGFloat {
+        get { return radioGroupView.labelMargin }
+        set { radioGroupView.labelMargin = newValue }
+    }
+
+    public var lineWidth: CGFloat {
+        get { return radioGroupView.lineWidth }
+        set { radioGroupView.lineWidth = newValue }
+    }
+
+    
+
     
     public init(labels: [String]) {
         super.init(nibName: nil, bundle: nil)
-        btnLabels = labels
+        radioGroupView.btnLabels = labels
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        layoutButtons()
-    }
-    
-    private func layoutButtons(){
-        var metricsDictionary:Dictionary = [String:CGFloat]()
-        var viewsDictionary:Dictionary = [String:UIView]()
-        for (index, _) in btnLabels.enumerated() {
-            if(index != 0){
-                let spacerView = UIView()
-                spacerView.backgroundColor = UIColor(white: 7.0/8.0, alpha: 1.0)
-                spacerView.translatesAutoresizingMaskIntoConstraints = false
-                self.view.addSubview(spacerView)
-                viewsDictionary["spacerView"+index.description] = spacerView
-            }
-        }
-        for (index, label) in btnLabels.enumerated() {
-            let rect = CGRect(x: 0, y: 0, width: 0, height: 0)
-            let btn = YSRadioButton(frame: rect)
-            btn.fillColor = radioHeadFill
-            btn.lineWidth = lineWidth
-            btn.strokeColor = radioHeadStroke
-            btn.fillSize = radioHeadFillSize
-            btn.margin = radioHeadMargin
-            btn.titleLabel?.font = font
-            btn.tag = index
-            btn.setTitle(label, for: .normal)
-            btn.setTitleColor(labelColor, for: .normal)
-            btn.sizeToFit()
+    override public func loadView() {
+        super.loadView()
+        self.view = radioGroupView
+        radioGroupView.layoutButtons()
+        for (i, btn) in radioGroupView.btns.enumerated() {
+            btn.tag = i
             btn.addTarget(self, action: #selector(btnTapped(_:)), for: .touchUpInside)
-            btn.titleLabel?.font = font
-            btn.titleEdgeInsets = UIEdgeInsets(
-                top: 0,
-                left: btn.frame.size.height+labelMargin,
-                bottom: 0,
-                right: 0
-            )
-            self.view.addSubview(btn)
-            btns.append(btn)
-            metricsDictionary["height"] = btn.frame.size.height
-            btn.translatesAutoresizingMaskIntoConstraints = false
-            let objects = ["btn":btn]
-            btn.addConstraints(
-                NSLayoutConstraint.constraints(
-                    withVisualFormat: "H:[btn(==\(btn.frame.size.width+btn.frame.size.height+labelMargin))]",
-                    options: .alignAllTop,
-                    metrics: nil,
-                    views: objects
-                )
-            )
-            btn.drawCircle()
-            viewsDictionary["btn"+index.description] = btn
         }
-        
-        var formatStr = "V:|-"
-        for (index, _) in btnLabels.enumerated() {
-            if(index == btnLabels.count-1){
-                formatStr += "[btn\(index)(height)]"
-            }else if(index == 0){
-                formatStr += "[btn\(index)(height)][spacerView\(index+1)]"
-            }else{
-                formatStr += "[btn\(index)(height)][spacerView\(index+1)(==spacerView\(index))]"
-            }
-        }
-        formatStr += "-|"
-        let constraints = NSLayoutConstraint.constraints(
-            withVisualFormat:formatStr,
-            options: .alignAllLeft,
-            metrics: metricsDictionary,
-            views: viewsDictionary
-        )
-        self.view.addConstraints(constraints)
+
     }
+
     
     @objc func btnTapped(_ sender: YSRadioButton) {
         if let sb = selectedBtn{

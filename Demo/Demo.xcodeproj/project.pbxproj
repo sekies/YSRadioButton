@@ -14,6 +14,7 @@
 		F3638A01231F80A700CD2DEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F36389FF231F80A700CD2DEF /* LaunchScreen.storyboard */; };
 		F3638A32231F890A00CD2DEF /* YSRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3638A2E231F890A00CD2DEF /* YSRadioButton.swift */; };
 		F3638A33231F890A00CD2DEF /* YSRadioButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3638A30231F890A00CD2DEF /* YSRadioButtonViewController.swift */; };
+		F3C31417232B8F7A00B3E139 /* YSRadioButtonGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C31416232B8F7A00B3E139 /* YSRadioButtonGroupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,7 @@
 		F3638A2E231F890A00CD2DEF /* YSRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YSRadioButton.swift; sourceTree = "<group>"; };
 		F3638A2F231F890A00CD2DEF /* YSRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSRadioButton.h; sourceTree = "<group>"; };
 		F3638A30231F890A00CD2DEF /* YSRadioButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YSRadioButtonViewController.swift; sourceTree = "<group>"; };
+		F3C31416232B8F7A00B3E139 /* YSRadioButtonGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YSRadioButtonGroupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +88,9 @@
 		F3638A2D231F890A00CD2DEF /* YSRadioButton */ = {
 			isa = PBXGroup;
 			children = (
-				F3638A2E231F890A00CD2DEF /* YSRadioButton.swift */,
 				F3638A2F231F890A00CD2DEF /* YSRadioButton.h */,
+				F3638A2E231F890A00CD2DEF /* YSRadioButton.swift */,
+				F3C31416232B8F7A00B3E139 /* YSRadioButtonGroupView.swift */,
 				F3638A30231F890A00CD2DEF /* YSRadioButtonViewController.swift */,
 			);
 			name = YSRadioButton;
@@ -167,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F36389F9231F80A500CD2DEF /* ViewController.swift in Sources */,
+				F3C31417232B8F7A00B3E139 /* YSRadioButtonGroupView.swift in Sources */,
 				F3638A32231F890A00CD2DEF /* YSRadioButton.swift in Sources */,
 				F3638A33231F890A00CD2DEF /* YSRadioButtonViewController.swift in Sources */,
 				F36389F7231F80A500CD2DEF /* AppDelegate.swift in Sources */,
