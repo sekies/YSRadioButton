@@ -9,16 +9,16 @@
 import UIKit
 
 class YSRadioButtonGroupView: UIView {
-    public var labelColor:UIColor = .black
-    public var font = UIFont.systemFont(ofSize: 18)
-    public var radioHeadFill:UIColor = .red
-    public var radioHeadStroke:UIColor = .red
-    public var radioHeadFillSize:CGFloat = 0.6
-    public var radioHeadMargin:CGFloat = 5
-    public var labelMargin:CGFloat = 5
-    public var lineWidth:CGFloat = 1
-    public var btnLabels:[String]!
-    public var btns:[UIButton] = []
+    var labelColor:UIColor = .black
+    var font = UIFont.systemFont(ofSize: 18)
+    var radioHeadFill:UIColor = .red
+    var radioHeadStroke:UIColor = .red
+    var radioHeadFillSize:CGFloat = 0.6
+    var radioHeadMargin:CGFloat = 5
+    var labelMargin:CGFloat = 5
+    var lineWidth:CGFloat = 1
+    var btnLabels:[String]!
+    var btns:[UIButton] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
