@@ -13,12 +13,11 @@ public protocol YSRadioButtonViewControllerDelegate {
 }
 
 
-public class YSRadioButtonViewController: UIViewController {
+public class YSRadioButtonViewController: UIViewController,YSRadioButtonModelDelegate {
     private var selectedBtn:YSRadioButton?
     private var radioGroupView:YSRadioButtonGroupView = YSRadioButtonGroupView()
     
     public var delegate:YSRadioButtonViewControllerDelegate?
-    var no:Int?
     
     public var labelColor: UIColor {
         get { return radioGroupView.labelColor }
@@ -60,12 +59,14 @@ public class YSRadioButtonViewController: UIViewController {
         set { radioGroupView.lineWidth = newValue }
     }
 
-    
+    private var model:YSRadioButtonModel = YSRadioButtonModel()
 
     
     public init(labels: [String]) {
         super.init(nibName: nil, bundle: nil)
         radioGroupView.btnLabels = labels
+        model.delegate = self
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -89,8 +90,11 @@ public class YSRadioButtonViewController: UIViewController {
             sb.clearSelectedCircle()
         }
         sender.drawSelectedCircle()
-        no = sender.tag
         selectedBtn = sender
+        model.set(no: sender.tag)
+    }
+    
+    func ysRadioButtonModelDidSet(no: Int?) {
         delegate?.didYSRadioButtonSelect(no: no!)
     }
 }
